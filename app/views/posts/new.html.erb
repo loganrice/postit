@@ -1,0 +1,42 @@
+
+<h4>Pure HTML</h4>
+<!-- cross site request forgery CSRF 
+in order for this to work -->
+<!-- the protect_from_fogery method needs to be 
+disabled in the file application_controller.rb -->
+<form action="/posts" method="POST">
+  Title: <input type='text' name="my title">
+  <br/>
+  <input type='submit' class='btn btn-primary'>
+</form>
+
+<!-- When you need to use a pure html form
+you want to use form helpers so you can
+use protect from fogery -->
+<h4>Rails form helpers</h4>
+<%= form_tag '/posts' do %>
+  <%= label_tag :title %>
+  <%= text_field_tag :title %>
+  <br/>
+  <%= submit_tag "Create Post", class:"btn btn-primary"%>
+<% end %>
+
+
+<!-- Takes an object and determines where to 
+submit to and what the method is -->
+<h4>Rails model-backed form helpers</h4>
+
+<% if @post.errors.any? %>
+  <h5> There were some errors</h5>
+  <ul>
+    <%= @post.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br/>
+  <%= f.submit "Create Post", class:"btn btn-primary" %>
+<% end %>
