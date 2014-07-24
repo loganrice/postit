@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = User.first # TODO: change after we have authentication
 
     if @post.save
       flash[:notice] = "Your post was created."
@@ -43,6 +44,6 @@ class PostsController < ApplicationController
     #:post is the top level key
     # params.require(:post).permit(:title, :url)
     #params.require(:post).permit! works for everything
-    params.require(:post).permit(:title, :url)
+    params.require(:post).permit(:title, :url, :description)
   end
 end
