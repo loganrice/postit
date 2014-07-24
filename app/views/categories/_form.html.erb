@@ -1,6 +1,5 @@
-<% if @category.errors.any? %>
-  <%= render 'shared/error', object: @category %>
-<% end %> 
+<%= render 'shared/error', object: @category %>
+
 <div class='well'>
 <%= form_for @category do |f| %>
   <div class="control-group">

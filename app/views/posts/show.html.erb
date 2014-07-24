@@ -7,8 +7,14 @@
 </p>
 
 <%= render 'shared/content_title', title: @post.title %>
-
+<%= render 'shared/error', object: @comment %>
 <p>
   <%= @post.description %>
 </p>
 <hr/>
+<h5>Create a comment:</h5>
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.text_area :body %>
+  <br/>
+  <%= f.submit "Create Comment", class:'btn btn-primary' %>
+<% end %>

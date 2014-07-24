@@ -1,11 +1,4 @@
-
-<!-- Takes an object and determines where to 
-submit to and what the method is -->
-<h4>Rails model-backed form helpers</h4>
-
-<% if @post.errors.any? %>
 <%= render 'shared/error', object: @post %>
-<% end %>
 
 <div class="well">
   <%= form_for @post do |f| %>
