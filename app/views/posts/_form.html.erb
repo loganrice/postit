@@ -4,16 +4,7 @@ submit to and what the method is -->
 <h4>Rails model-backed form helpers</h4>
 
 <% if @post.errors.any? %>
-<div class="row">
-  <div class="alert alert-error span8">
-    <h5> There were some errors</h5>
-    <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+<%= render 'shared/error', object: @post %>
 <% end %>
 
 <div class="well">
