@@ -1,0 +1,23 @@
+
+<!-- Takes an object and determines where to 
+submit to and what the method is -->
+<h4>Rails model-backed form helpers</h4>
+
+<div class="alert alert-error">
+  <% if @post.errors.any? %>
+    <h5> There were some errors</h5>
+    <ul>
+      <%= @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+<%= form_for @post do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :url %>
+  <%= f.text_field :url %>
+  <br/>
+  <%= f.submit "Create Post", class:"btn btn-primary" %>
+<% end %>

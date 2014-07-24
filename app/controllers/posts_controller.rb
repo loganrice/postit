@@ -12,8 +12,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    binding.pry
-
     @post = Post.new(post_params)
 
     if @post.save
@@ -22,7 +20,6 @@ class PostsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def edit
@@ -46,6 +43,6 @@ class PostsController < ApplicationController
     #:post is the top level key
     # params.require(:post).permit(:title, :url)
     #params.require(:post).permit! works for everything
-    params.require(:post).permit!
+    params.require(:post).permit(:title, :url)
   end
 end
