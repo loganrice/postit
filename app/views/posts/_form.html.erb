@@ -3,16 +3,17 @@
 submit to and what the method is -->
 <h4>Rails model-backed form helpers</h4>
 
+<% if @post.errors.any? %>
 <div class="alert alert-error">
-  <% if @post.errors.any? %>
-    <h5> There were some errors</h5>
-    <ul>
-      <%= @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <h5> There were some errors</h5>
+  <ul>
+    <%= @post.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
 </div>
+<% end %>
+
 <%= form_for @post do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
