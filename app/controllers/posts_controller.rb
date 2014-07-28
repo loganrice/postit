@@ -6,7 +6,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    
+    @comments = @post.comments
+    binding.pry
   end
 
   def new
@@ -48,7 +49,6 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
-    @comment = Comment.new
-    @comments = @post.comments 
+    @comment = Comment.new 
   end
 end
