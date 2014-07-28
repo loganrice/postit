@@ -18,3 +18,17 @@
   <br/>
   <%= f.submit "Create Comment", class:'btn btn-primary' %>
 <% end %>
+
+<section>
+<h5>Comments</h5>
+<% @comments.each do |comment| %>
+<div class='well'>
+  <em><%= comment.body %></em>
+  <br/>
+  <small class='quiet'>by</small>
+  <%= link_to comment.user.username, user_path %>
+  <small>at <%= comment.created_at %></small>
+
+</div>
+<% end %>
+</section>
