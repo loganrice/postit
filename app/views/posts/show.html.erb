@@ -33,7 +33,7 @@
   <br/>
   <small class='quiet'>by</small>
   <%= link_to comment.user.username, user_path(comment.user) %>
-  <small>at <%= comment.created_at %></small>
+  <small>at <%= display_datetime(comment.created_at) %></small>
 
 </div>
 <% end %>
