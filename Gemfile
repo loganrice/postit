@@ -13,6 +13,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+# gem to help with password one way hash math
+gem 'bcrypt-ruby', '=3.0.1'
+
 group :doc do
   gem 'sdoc', require: false
 end
