@@ -7,7 +7,6 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments
-    binding.pry
   end
 
   def new
@@ -17,7 +16,6 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = User.first # TODO: change after we have authentication
-
     if @post.save
       flash[:notice] = "Your post was created."
       redirect_to posts_path
@@ -44,7 +42,7 @@ class PostsController < ApplicationController
     #:post is the top level key
     # params.require(:post).permit(:title, :url)
     #params.require(:post).permit! works for everything
-    params.require(:post).permit(:title, :url, :description)
+    params.require(:post).permit(:title, :url, :description, category_ids: [])
   end
 
   def set_post
