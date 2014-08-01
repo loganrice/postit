@@ -16,6 +16,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    set_up_user
+  end
+
+  def edit
+    set_up_user
+  end
+
+  def set_up_user
+    @user = User.find(session[:user_id])
+  end
+
   def user_params
     params.require(:user).permit(:username, :password)
   end

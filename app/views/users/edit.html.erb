@@ -1,0 +1,8 @@
+<%= render 'shared/content_title', title: 'Profile' %>
+<%= render 'form' %>
+
+<div class='well'>
+  <% @user.posts.each do |post| %>
+  <p><%= post.title %></p>
+  <% end %>
+</div>
