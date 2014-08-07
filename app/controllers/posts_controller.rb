@@ -29,11 +29,15 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      flash[:notice] = "The post was updated"
-      redirect_to post_path(@post)
+    if @post.user == current_user
+      if @post.update(post_params)
+        flash[:notice] = "The post was updated"
+        redirect_to post_path(@post)
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to root_path
     end
   end
 
