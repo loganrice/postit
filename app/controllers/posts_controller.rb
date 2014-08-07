@@ -50,17 +50,23 @@ class PostsController < ApplicationController
   def vote
     @vote = Vote.create(voteable: @post, user: current_user, vote: params[:vote])
 
-    if @vote.valid?
-      flash[:notice] = "Your vote was counted."
-    else
-      flash[:error] = "Your vote was not counted."
+    respond_to do |format|
+      format.html { redirect_to :back, notice: vote_message(@vote)}
+      format.js
     end
-
-    redirect_to :back
   end
 
   private 
   # strong paramaters
+
+  def vote_message(vote)
+    if vote.valid?
+      "Your vote was counted."
+    else
+      "Sorry you can only vote once"
+    end
+  end
+
   def post_params
     #:post is the top level key
     # params.require(:post).permit(:title, :url)
