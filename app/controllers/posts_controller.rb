@@ -26,6 +26,12 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if @post.user == current_user
+      render :edit
+    else
+      flash[:error] = "You can only edit your own posts."
+      redirect_to post_path(@post)
+    end
   end
 
   def update
