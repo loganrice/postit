@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update]
   before_action :require_user, only: [:new, :create]
-  before_action :require_admin
+  before_action :require_admin, only: [:new, :create, :update, :edit]
   
   def index
     @categories = Category.all
@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
   end
 
   def set_category
-    @category = Category.find(params[:id])
+    @category = Category.find_by(slug: params[:id])
   end
 
 end

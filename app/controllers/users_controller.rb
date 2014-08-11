@@ -3,12 +3,11 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:edit, :update]
 
   def new
+    binding.pry
     @user = User.new
   end
 
   def create
-    
-
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
@@ -39,7 +38,7 @@ class UsersController < ApplicationController
   private
 
   def set_up_user
-    @user = User.find(params[:id])
+    @user = User.find_by(slug: params[:id])
   end
 
   def user_params
