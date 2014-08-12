@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   include VoteableLoganAug
+  
   belongs_to :user
   belongs_to :post
   
