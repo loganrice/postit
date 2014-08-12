@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   include VoteableLoganAug
   include Sluggable
-
+          
   belongs_to :user
   has_many :comments
   has_many :post_categories
