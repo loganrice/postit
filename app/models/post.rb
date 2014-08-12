@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  include Voteable
+  include VoteableLoganAug
 
   belongs_to :user
   has_many :comments
